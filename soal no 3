@@ -1,0 +1,31 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameter gerak vertikal
+v0 = 50  # Kecepatan awal (m/s)
+g = 9.8  # Percepatan gravitasi (m/s^2)
+
+# Waktu total hingga benda kembali ke posisi awal
+t_total = 2 * v0 / g  # t_total = 2v0/g
+
+# Waktu dari 0 hingga t_total
+t = np.linspace(0, t_total, 500)  # 500 titik waktu
+
+# Posisi benda sebagai fungsi waktu
+y = v0 * t - 0.5 * g * t**2
+
+# Menampilkan beberapa hasil perhitungan
+print("Waktu (t) dan Posisi (y):")
+for ti, yi in zip(t[:10], y[:10]):  # Menampilkan 10 data pertama
+    print(f"t = {ti:.2f} s, y = {yi:.2f} m")
+
+# Visualisasi gerak benda
+plt.figure(figsize=(10, 6))
+plt.plot(t, y, label=r"$y(t) = v_0 \cdot t - \frac{1}{2} g \cdot t^2$", color="blue")
+plt.axhline(0, color="black", linewidth=0.8, linestyle="--", label="Posisi awal (y=0)")
+plt.title("Grafik Gerak Benda Vertikal")
+plt.xlabel("Waktu (detik)")
+plt.ylabel("Posisi (meter)")
+plt.grid(True)
+plt.legend()
+plt.show()
